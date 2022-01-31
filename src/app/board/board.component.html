@@ -1,13 +1,8 @@
 
 
-<h1>current Player {{player}}</h1>
+<!-- <h1>current Player {{player}}</h1> -->
 
-
-<button (click)="newGame()"> start new Game</button>
-
-
-<h2 *ngIf="winner"> player {{winner}} the game</h2>
-
+<h2 *ngIf="winner"> player {{winner}} won the game</h2>
 
 <main>
 
@@ -16,3 +11,7 @@
     </app-square>
 
 </main>
+
+<button (click)="newGame()" nbButton fullWidth status="info" style="margin-top:1rem;" *ngIf="isResetOn"> start new Game</button>
+
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -9,6 +9,9 @@ export class BoardComponent implements OnInit {
 
   squares: any[] = [];
   xIsNext:boolean = false;
+  @Output() newWinner = new EventEmitter<string>();
+  isResetOn = false
+
 
   winner :string = '';
   
@@ -20,6 +23,7 @@ export class BoardComponent implements OnInit {
   }
 
   newGame(){
+    this.isResetOn = true;
     this.squares = Array(9).fill(null);
     this.winner = '';
     this.xIsNext = true;
@@ -38,6 +42,7 @@ export class BoardComponent implements OnInit {
       this.xIsNext = !this.xIsNext
     }
     this.winner = this.calculateWinner();
+    this.newWinner.emit(this.winner)
 
   }
 
